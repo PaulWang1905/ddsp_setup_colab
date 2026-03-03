@@ -9,7 +9,7 @@ echo "=========================================="
 
 # Step 1: Create conda environment with Python 3.10 and CUDA
 echo "[1/4] Creating conda environment..."
-conda create -n $ENV_NAME python=3.10 cudatoolkit=11.2 cudnn=8.1 -c conda-forge -y
+conda create -n $ENV_NAME python=3.9 cudatoolkit=11.2 cudnn=8.1 -c conda-forge -y
 
 # Step 2: Activate the environment
 echo "[2/4] Activating environment..."
