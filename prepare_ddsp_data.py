@@ -46,12 +46,18 @@ def prepare_tfrecord(audio_dir: str, output_tfrecord: str, num_shards: int = 10)
     
     # Prepare TFRecord
     cmd = [
-        'ddsp_prepare_tfrecord',
-        f'--input_audio_filepatterns={audio_filepattern}',
-        f'--output_tfrecord_path={output_tfrecord}',
-        f'--num_shards={num_shards}',
-        '--alsologtostderr'
-    ]
+    'ddsp_prepare_tfrecord',
+    f'--input_audio_filepatterns={audio_filepattern}',
+    f'--output_tfrecord_path={output_tfrecord}',
+    f'--num_shards={num_shards}',
+    '--sample_rate=16000',
+    '--frame_rate=50',
+    '--example_secs=4.0',
+    '--hop_secs=1.0',
+    '--viterbi=True',
+    '--center=True',
+    '--alsologtostderr'
+]
     
     print(f"\nRunning: {' '.join(cmd)}\n")
     subprocess.run(cmd, check=True)
