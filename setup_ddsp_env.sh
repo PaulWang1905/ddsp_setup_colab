@@ -38,7 +38,7 @@ EOF
 
 # Step 4: Install packages with pinned versions
 echo "[4/4] Installing packages with pinned versions..."
-
+!sudo apt-get install libportaudio2
 # Core dependencies first (order matters for compatibility)
 pip install --upgrade pip
 
@@ -72,13 +72,14 @@ pip install --upgrade pip
 #pip install "gin-config>=0.3.0"
 #pip install "google-cloud-storage"
 #pip install "six"
-pip install crepe==0.0.12 --no-build-isolation --break-system-packages
+#pip install crepe==0.0.12 --no-build-isolation --break-system-packages
+pip install tensorflow==2.11 tensorflow-probability==0.19.0 tensorflowjs==3.18.0 tensorflow-datasets==4.9.0 tflite-support==0.1.0a1 ddsp[data_preparation]==3.7.0
 # Install DDSP
-pip install "tensorflow<=2.11"
-pip install ddsp
-pip install tensorflow-probability==0.19.0
-pip install apache_beam==2.46.0 --break-system-packages
-pip install protobuf==3.20.*  --break-system-packages
+#pip install "tensorflow<=2.11"
+#pip install ddsp
+#pip install tensorflow-probability==0.19.0
+#pip install apache_beam==2.46.0 --break-system-packages
+#pip install protobuf==3.20.*  --break-system-packages
 
 echo "=========================================="
 echo "Setup complete!"
