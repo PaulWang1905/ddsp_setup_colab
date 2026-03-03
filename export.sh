@@ -29,9 +29,9 @@ ddsp_export \
   --save_dir="$EXPORT_DIR" \
   --inference_model=vst_stateless_predict_controls \
   --tflite \
-  --notfjs \
-  --gin_param="frame_size=64" \
-  --gin_param="sample_rate=16000"
+  --notfjs 
+  #--gin_param="frame_size=64" \
+ # --gin_param="sample_rate=16000"
 
 echo "=========================================="
 echo "Export complete!"
