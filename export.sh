@@ -27,8 +27,6 @@ ddsp_export \
   --name="$MODEL_NAME" \
   --model_path="$MODEL_PATH" \
   --save_dir="$EXPORT_DIR" \
-  --gin_file=models/solo_instrument.gin \
-  --gin_file=datasets/tfrecord.gin \
   --inference_model=vst_stateless_predict_controls \
   --tflite \
   --notfjs
