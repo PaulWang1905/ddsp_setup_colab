@@ -25,9 +25,11 @@ ddsp_run \
   --mode=train \
   --alsologtostderr \
   --save_dir="$SAVE_DIR" \
-  --gin_file=models/solo_instrument.gin \
+  --gin_file=models/vst/vst.gin \
   --gin_file=datasets/tfrecord.gin \
   --gin_param="TFRecordProvider.file_pattern='$TRAIN_TFRECORD_FILEPATTERN'" \
+  --gin_param="TFRecordProvider.centered=True" \
+  --gin_param="TFRecordProvider.frame_rate=50" \
   --gin_param="batch_size=16" \
   --gin_param="train_util.train.num_steps=30000" \
   --gin_param="train_util.train.steps_per_save=300" \
