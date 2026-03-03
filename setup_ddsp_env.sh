@@ -72,7 +72,7 @@ pip install --upgrade pip
 #pip install "gin-config>=0.3.0"
 #pip install "google-cloud-storage"
 #pip install "six"
-
+pip install crepe==0.0.12 --no-build-isolation --break-system-packages
 # Install DDSP
 pip install "tensorflow<=2.11"
 pip install ddsp
