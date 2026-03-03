@@ -41,7 +41,26 @@ echo "[4/4] Installing packages with pinned versions..."
 sudo apt-get install libportaudio2
 # Core dependencies first (order matters for compatibility)
 pip install --upgrade pip
+conda run -n $ENV_NAME pip install --upgrade pip==23.2.1 setuptools==68.0.0 wheel==0.41.2
+conda run -n $ENV_NAME pip install "numpy<1.24"
+conda run -n $ENV_NAME pip install "protobuf<=3.20.3"
 
+echo "Installing TensorFlow stack..."
+conda run -n $ENV_NAME pip install \
+    tensorflow==2.11 \
+    tensorflow-probability==0.19.0 \
+    tensorflow-datasets==4.9.0 \
+    tensorflowjs==3.18.0 \
+    tflite-support==0.1.0a1
+
+echo "Installing crepe WITHOUT build isolation..."
+conda run -n $ENV_NAME pip install \
+    crepe==0.0.12 \
+    --no-build-isolation
+
+echo "Installing DDSP..."
+conda run -n $ENV_NAME pip install \
+    ddsp[data_preparation]==3.7.0
 # Install numpy first (many packages depend on it)
 # pip install "numpy<1.24"
 
@@ -73,7 +92,7 @@ pip install --upgrade pip
 #pip install "google-cloud-storage"
 #pip install "six"
 #pip install crepe==0.0.12 --no-build-isolation --break-system-packages
-pip install tensorflow==2.11 tensorflow-probability==0.19.0 tensorflowjs==3.18.0 tensorflow-datasets==4.9.0 tflite-support==0.1.0a1 ddsp[data_preparation]==3.7.0
+# pip install tensorflow==2.11 tensorflow-probability==0.19.0 tensorflowjs==3.18.0 tensorflow-datasets==4.9.0 tflite-support==0.1.0a1 ddsp[data_preparation]==3.7.0
 # Install DDSP
 #pip install "tensorflow<=2.11"
 #pip install ddsp
