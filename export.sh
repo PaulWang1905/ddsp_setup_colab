@@ -1,0 +1,39 @@
+#!/bin/bash
+set -e  # Exit on any error
+
+ENV_NAME="ddsp_env"
+
+echo "=========================================="
+echo "DDSP Export Script"
+echo "=========================================="
+
+# Activate conda environment
+echo "[1/2] Activating conda environment: $ENV_NAME..."
+source "$(conda info --base)/etc/profile.d/conda.sh"
+conda activate $ENV_NAME
+
+# Export configuration
+MODEL_NAME="solo-instrument"
+MODEL_PATH="models/ddsp-solo-instrument"
+EXPORT_DIR="exports/ddsp-solo-instrument"
+
+echo "[2/2] Exporting DDSP model..."
+echo "  Model name: $MODEL_NAME"
+echo "  Model path: $MODEL_PATH"
+echo "  Export directory: $EXPORT_DIR"
+echo "=========================================="
+
+ddsp_export \
+  --name="$MODEL_NAME" \
+  --model_path="$MODEL_PATH" \
+  --save_dir="$EXPORT_DIR" \
+  --gin_file=models/solo_instrument.gin \
+  --gin_file=datasets/tfrecord.gin \
+  --inference_model=vst_stateless_predict_controls \
+  --tflite \
+  --notfjs
+
+echo "=========================================="
+echo "Export complete!"
+echo "Exported model saved to: $EXPORT_DIR"
+echo "=========================================="
