@@ -38,7 +38,7 @@ EOF
 
 # Step 4: Install packages with pinned versions
 echo "[4/4] Installing packages with pinned versions..."
-!sudo apt-get install libportaudio2
+sudo apt-get install libportaudio2
 # Core dependencies first (order matters for compatibility)
 pip install --upgrade pip
 
